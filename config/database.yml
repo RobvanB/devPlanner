@@ -23,7 +23,9 @@ default: &default
 
 development:
   <<: *default
-  database: devPlanner_development
+  database: devplanner_development
+  username: rob
+  password: pl01nk
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
