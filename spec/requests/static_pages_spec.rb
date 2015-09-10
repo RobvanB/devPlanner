@@ -8,9 +8,14 @@ RSpec.describe "StaticPages", type: :request do
       expect(page).to have_selector('h1', :text => 'Dev Planner')
     end
 
-    it "should have the title 'Home'" do
+    it "should have the base title'" do
       visit '/static_pages/home'
-      expect(page).to have_title("Dev Planner | Home")
+      expect(page).to have_title("Dev Planner")
+    end
+
+    it "should not have a custom page title" do
+      visit '/static_pages/home'
+      expect(page).to_not have_title('| Home')
     end
   end
 

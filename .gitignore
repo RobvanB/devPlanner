@@ -15,3 +15,9 @@
 # RvB
 /.idea
 /.rvmrc
+doc/
+*.swp
+*-
+.project
+.DS_Store
+bundler_stubs/
