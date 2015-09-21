@@ -1,45 +1,32 @@
 require 'rails_helper'
 
 RSpec.describe "StaticPages", type: :request do
+  subject { page }
 
   describe "Home Page" do
-    it "should have the h1 'Dev Planner'" do
-      visit '/static_pages/home'
-      expect(page).to have_selector('h1', :text => 'Dev Planner')
-    end
+    before { visit root_path }
 
-    it "should have the base title'" do
-      visit '/static_pages/home'
-      expect(page).to have_title("Dev Planner")
-    end
-
-    it "should not have a custom page title" do
-      visit '/static_pages/home'
-      expect(page).to_not have_title('| Home')
-    end
-  end
+    it { expect(page).to have_selector('h1',    text: 'Welcome to Dev Planner') }
+    it { expect(page).to have_title(spec_full_title('')) }
+    it { expect(page).to_not have_title('| Home') }
+end
 
   describe "Help Page" do
-    it "should have the h1 'Help' " do
-      visit '/static_pages/help'
-      expect(page).to have_selector('h1', :text => 'Dev Planner')
-    end
-
-    it "should have the title 'Help' " do
-      visit '/static_pages/help'
-      expect(page).to have_title("Dev Planner | Help")
-    end
+    before { visit help_path }
+    it { expect(page).to have_selector('h1', :text => 'Dev Planner') }
+    it { expect(page).to have_title(spec_full_title('Help')) }
   end
 
   describe "About Page" do
-    it "should have the h1 'About' " do
-      visit '/static_pages/about'
-      expect(page).to have_selector('h1', :text => 'Dev Planner')
-    end
-    it "should have the title 'About' " do
-      visit '/static_pages/about'
-      expect(page).to have_title("Dev Planner | About")
-    end
+    before { visit about_path }
+    it { expect(page).to have_selector('h1', :text => 'Dev Planner') }
+    it { expect(page).to have_title(spec_full_title('About')) }
+  end
+
+  describe "Contact page" do
+    before { visit contact_path }
+    it { expect(page).to have_selector('h1', :text => 'Dev Planner') }
+    it { expect(page).to have_title(spec_full_title('Contact')) }
   end
 
 end
