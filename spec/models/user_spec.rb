@@ -47,7 +47,7 @@ RSpec.describe User, type: :model do
       let(:user_for_invalid_password) { found_user.authenticate("invalid") }
 
       it { should_not == user_for_invalid_password }
-      specify { user_for_invalid_password.should be false }
+      specify { expect(user_for_invalid_password).to be false }
     end
   end
 
