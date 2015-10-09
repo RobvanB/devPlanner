@@ -13,6 +13,15 @@ RSpec.describe User, type: :model do
     it { should respond_to(:password_digest) }
     it { should respond_to(:password) }
     it { should respond_to(:password_confirmation) }
+    it { should respond_to(:remember_token) }
+    it { should respond_to(:authenticate) }
+
+  end
+
+  describe "remember token" do
+    before { @user.save }
+    #subject { @user.remember_token }
+    it { expect(@user.remember_token).to_not be_blank }
   end
 
   describe "when password is not present" do
