@@ -1,28 +1,10 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the first part of the Ruby On Rails Tutorail from Michael Hartl:
+http://rails-3-2.railstutorial.org
 
-Things you may want to cover:
+It only contains the sign up/Sign In and list users part of the tutorial, so up to (but not including)
+chapter 10.
 
-* Ruby version
+It is using Rails 4.2.4
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
