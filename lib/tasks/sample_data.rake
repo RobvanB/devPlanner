@@ -16,5 +16,12 @@ namespace :db do
                    password: password,
                    password_confirmation: password)
     end
+
+    99.times do |o|
+      name  = Faker::Name.name
+      cust_id = o+1
+      Customer.create!(cust_id: cust_id, name: name)
+    end
+
   end
 end

@@ -9,4 +9,9 @@ FactoryGirl.define do
       admin true
     end
   end
+
+  factory :customer do
+    sequence(:cust_id) { |n| "#{n}" }
+    sequence(:name) { |n| "Customer #{n}" }
+  end
 end
