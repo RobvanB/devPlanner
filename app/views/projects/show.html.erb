@@ -1,19 +1,42 @@
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Proj:</strong>
-  <%= @project.proj_id %>
-</p>
+<table class="table table-striped" style="width:50%">
+  <tr>
+    <td>
+      <strong>Proj:</strong>
+    </td>
+     <td>
+      <%= @project.proj_id %>
+    </td>
+  </tr>
 
-<p>
-  <strong>Proj name:</strong>
-  <%= @project.proj_name %>
-</p>
+  <tr>
+    <td>
+      <strong>Proj name:</strong>
+    </td>
+    <td>
+    <%= @project.proj_name %>
+    </td>
+  </tr>
 
-<p>
-  <strong>Cust:</strong>
-  <%= @project.cust_id %>
-</p>
+  <tr>
+    <td>
+      <strong>Cust:</strong>
+    </td>
+    <td>
+      <%= @project.custId %>  <%= @project.customer.name %>
+    </td>
+  </tr>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+  <tr>
+    <td>
+      <strong>PM:</strong>
+    </td>
+    <td>
+      <%= @project.pm_id %>  <%= @project.pm.name %>
+    </td>
+  </tr>
+</table>
+  <%= link_to 'Edit', edit_project_path(@project) %> |
+  <%= link_to 'Back', projects_path %>
+

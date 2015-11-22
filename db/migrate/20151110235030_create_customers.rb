@@ -1,11 +1,11 @@
 class CreateCustomers < ActiveRecord::Migration
   def change
     create_table :customers do |t|
-      t.integer :cust_id
+      t.integer :custId
       t.string :name
+      t.string :pm
 
       t.timestamps null: false
     end
-    add_index :customers, [:cust_id]
   end
 end

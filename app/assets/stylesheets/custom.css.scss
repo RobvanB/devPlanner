@@ -12,6 +12,10 @@ $grayMediumLight: #eaeaea;
 
 /* universal */
 
+#notice {
+  color: green;
+}
+
 html {
   overflow-y: scroll;
 }
@@ -142,10 +146,14 @@ footer {
 
   input, textarea, select, .uneditable-input {
     border: 1px solid #bbb;
-    width: 100%;
+    width: 25%;
     padding: 10px;
     margin-bottom: 15px;
     @include box_sizing;
+  }
+
+  .inputdisabled{
+    background-color: #a9a9a9;
   }
 
   input {
@@ -157,6 +165,22 @@ footer {
     color: #f00;
     ul {
       list-style: none;
+    }
+  }
+
+  .buttonbg{
+    padding: 6px;/* CHANGE PADDING HERE*/
+    margin-bottom: 30px;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    color: inherit;
+    background-color: #eeeeee; /* CHANGE BACKGROUND HERE*/
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    &:hover {
+      background-color: $gray-light;
     }
   }
 

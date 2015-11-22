@@ -1,44 +1,74 @@
 class CustomersController < ApplicationController
-  before_filter :signed_in_user     # See application_controller
-  before_action :set_cust, only: [:show, :edit, :update, :destroy]
+  before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
-  def new
-    #cust_params = Hash.new[cust_id: "0"]   # For some reason required for the 'new' action when there is no record yet
-    @customer = Customer.new(cust_params)
+  # GET /customers
+  # GET /customers.json
+  def index
+    @customers = Customer.all
   end
 
+  # GET /customers/1
+  # GET /customers/1.json
+  def show
+  end
+
+  # GET /customers/new
+  def new
+    @customer = Customer.new
+  end
+
+  # GET /customers/1/edit
+  def edit
+  end
+
+  # POST /customers
+  # POST /customers.json
   def create
-    @customer = Customer.new(cust_params)
-    if @customer.save
-      flash["success"] = "Customer created"
-      redirect_to @customer
-    else
-      render 'new'
+    @customer = Customer.new(customer_params)
+
+    respond_to do |format|
+      if @customer.save
+        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
+        format.json { render :show, status: :created, location: @customer }
+      else
+        format.html { render :new }
+        format.json { render json: @customer.errors, status: :unprocessable_entity }
+      end
     end
   end
 
-  def index
-    @customers = Customer.paginate(page: params[:page])
+  # PATCH/PUT /customers/1
+  # PATCH/PUT /customers/1.json
+  def update
+    respond_to do |format|
+      if @customer.update(customer_params)
+        format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
+        format.json { render :show, status: :ok, location: @customer }
+      else
+        format.html { render :edit }
+        format.json { render json: @customer.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
-  def show
-    @customer = Customer.find(params[:id])
-  end
-
+  # DELETE /customers/1
+  # DELETE /customers/1.json
   def destroy
-    Customer.find(params[:id]).destroy
-    flash[:success] = "Customer destroyed."
-    redirect_to customers_url
+    @customer.destroy
+    respond_to do |format|
+      format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
-
 
   private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_cust
-    @cust_id = Customer.find(params[:id])
-  end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_customer
+      @customer = Customer.find(params[:id])
+    end
 
-  def cust_params
-    params.require(:customer).permit(:cust_id, :name)
-  end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def customer_params
+      params.require(:customer).permit(:name, :pm)
+    end
 end

@@ -2,12 +2,13 @@
 
 <h1>Listing Projects</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Proj</th>
-      <th>Proj name</th>
-      <th>Cust</th>
+      <th><%= t "activerecord.attributes.project.proj_id" %></th>
+      <th><%= t "activerecord.attributes.project.proj_name" %></th>
+      <th><%= t "activerecord.attributes.project.custId" %></th>
+      <th><%=  "PM" %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,7 +18,16 @@
       <tr>
         <td><%= project.proj_id %></td>
         <td><%= project.proj_name %></td>
-        <td><%= project.cust_id %></td>
+        <% if project.custId.nil? %>
+          <td></td>
+        <% else %>
+          <td><%= project.custId %> <%=  project.customer.name %></td>
+        <% end %>
+        <% if project.pm_id.nil? %>
+          <td></td>
+        <% else %>
+          <td><%= project.pm_id %>  <%= project.pm.name %></td>
+        <% end  %>
         <td><%= link_to 'Show', project %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>

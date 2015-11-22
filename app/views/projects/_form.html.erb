@@ -1,3 +1,4 @@
+<div class="container">
 <%= form_for(@project) do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
@@ -11,19 +12,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :proj_id %><br>
-    <%= f.text_field :proj_id %>
-  </div>
+  <% if @project.persisted? %>
+    <div class="field" >
+      <%= f.label :proj_id %><br>
+      <%= f.text_field :proj_id, :disabled=>true, class: "inputdisabled" %>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :proj_name %><br>
     <%= f.text_field :proj_name %>
   </div>
   <div class="field">
-    <%= f.label :cust_id %><br>
-    <%= f.number_field :cust_id %>
+    <%= f.label :custId %><br>
+    <%= f.collection_select(:custId, Customer.all, :custId, :name, { include_blank: true } ) %>
   </div>
+
+  <div class="field">
+    <%= f.label :pm %><br>
+    <%= f.collection_select(:pm_id, Pm.all, :id, :name, { include_blank: true } ) %>
+  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "buttonbg"%>
   </div>
 <% end %>
+</div>

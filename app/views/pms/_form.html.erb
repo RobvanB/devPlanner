@@ -1,0 +1,29 @@
+<%= form_for(@pm) do |f| %>
+  <% if @pm.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pm.errors.count, "error") %> prohibited this pm from being saved:</h2>
+
+      <ul>
+      <% @pm.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label "Linked to User (optional)" %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -11,27 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106003522) do
+ActiveRecord::Schema.define(version: 20151121201109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "customers", force: :cascade do |t|
-    t.integer  "cust_id"
+    t.integer  "custId"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "customers", ["cust_id"], name: "index_customers_on_cust_id", unique: true, using: :btree
+  add_index "customers", ["custId"], name: "index_customers_on_custId", unique: true, using: :btree
+
+  create_table "pms", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string   "proj_id"
     t.string   "proj_name"
-    t.integer  "cust_id"
+    t.integer  "custId"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "pm_id"
   end
+
+  add_index "projects", ["pm_id"], name: "index_projects_on_pm_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

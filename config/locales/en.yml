@@ -21,3 +21,15 @@
 
 en:
   hello: "Hello world"
+  #custId: "Customer ID"
+  activerecord:
+    attributes:
+     customer:
+      custId: "Customer ID"
+      pm: "Project Manager"
+      name: "Customer Name"
+      name_html: "Customer Name"
+     project:
+      proj_id: "Project ID"
+      proj_name: "Project Name"
+      custId: "Customer ID"

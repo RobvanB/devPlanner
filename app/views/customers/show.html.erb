@@ -1,18 +1,26 @@
-<% provide(:title, @customer.name) %>
-<h1>Update Customer</h1>
+<p id="notice"><%= notice %></p>
 
-<div class="row">
-  <aside class="span4">
-    <section>
-      <p>
-        Customer ID: <%= @customer.cust_id %> <br>
-        Name: <%= @customer.name %>
-      </p>
-    </section>
-  </aside>
-</div>
+<table class="table table-striped" style="width:50%">
+  <tr>
+    <td>
+      <strong><%= t "activerecord.attributes.customer.custId" %></strong>
+    </td>
+    <td>
+      <%= @customer.custId %>
+    </td>
+  </tr>
 
-<div class="btn-group" role="group" aria-label="...">
-  <%= button_to "Edit", edit_customer_path(@customer), class: "btn btn-sm btn-primary"%>
-  <%= button_to "Delete", customer_path(@customer), method: :delete, data: { confirm: "Delete customer?" }, class: "btn btn-sm btn-primary"%>
-</div>
+  <tr>
+    <td>
+      <strong><%=t "activerecord.attributes.customer.name" %></strong>
+    </td>
+    <td>
+      <%= @customer.name %>
+    </td>
+  </tr>
+
+
+</table>
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Back', customers_path %>

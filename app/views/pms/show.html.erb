@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pm.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @pm.email %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @pm.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_pm_path(@pm) %> |
+<%= link_to 'Back', pms_path %>

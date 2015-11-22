@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :pms
+  resources :customers
   resources :projects
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
