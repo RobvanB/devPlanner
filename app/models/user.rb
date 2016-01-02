@@ -9,8 +9,15 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
   has_secure_password
 
+  has_many :tasks
+  belongs_to :pm
+
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
+
+  def dropdown
+    "#{id} #{name}"
+  end
 
   private
 

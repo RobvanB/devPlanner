@@ -17,7 +17,11 @@
       <tr>
         <td><%= pm.name %></td>
         <td><%= pm.email %></td>
-        <td><%= pm.user_id %></td>
+        <% if pm.user_id == nil %>
+            <td></td>
+        <% else %>
+            <td><%= pm.user_id %> <%= pm.user.name %></td>
+        <% end %>
         <td><%= link_to 'Show', pm %></td>
         <td><%= link_to 'Edit', edit_pm_path(pm) %></td>
         <td><%= link_to 'Destroy', pm, method: :delete, data: { confirm: 'Are you sure?' } %></td>

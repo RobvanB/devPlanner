@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <% if @customer.persisted? %>
+
     <div class="field" >
-      <%= f.label :custId %><br>
-      <%= f.number_field :custId, :disabled=>true, class: "inputdisabled" %>
+      <%= f.label :id %><br>
+      <%= f.number_field :id, :disabled=>true, class: "inputdisabled" %>
     </div>
-  <%  end %>
+
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>

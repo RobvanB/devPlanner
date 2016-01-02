@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Tasks</h1>
+
+<% if @project %>
+  <h2 align="left">Tasks for project <%= @project.proj_name %> : </h2>
+<% else %>
+    <form class="filter_form">
+        <%= collection_select(:filter, :selected_id, User.all, :id, :dropdown, options = { include_blank: true } ) %>
+        <input type="submit" value="Filter" />
+    </form>
+<% end  %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Task Name</th>
+      <th>Project</th>
+      <th>Project Name</th>
+      <th>User</th>
+      <th>User Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.name %></td>
+        <td><%= task.project_id %></td>
+        <td>
+        <% if task.project_id != nil %>
+            <%= task.project.proj_name %>
+        <% end %>
+        </td>
+        <td><%= task.user_id %></td>
+        <td>
+          <% if task.user_id != nil %>
+            <%= task.user.name %>
+          <% end %>
+        </td>
+        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Task', new_task_path %>

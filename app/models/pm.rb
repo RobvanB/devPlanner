@@ -1,3 +1,4 @@
 class Pm < ActiveRecord::Base
-  belongs_to :project
+  has_many :projects
+  belongs_to :user
 end

@@ -18,10 +18,11 @@
       <tr>
         <td><%= project.proj_id %></td>
         <td><%= project.proj_name %></td>
-        <% if project.custId.nil? %>
+
+        <% if project.customer_id == nil %>
           <td></td>
         <% else %>
-          <td><%= project.custId %> <%=  project.customer.name %></td>
+          <td><%= project.customer_id %> <%=  project.customer.name %></td>
         <% end %>
         <% if project.pm_id.nil? %>
           <td></td>

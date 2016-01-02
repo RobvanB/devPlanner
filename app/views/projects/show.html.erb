@@ -24,7 +24,7 @@
       <strong>Cust:</strong>
     </td>
     <td>
-      <%= @project.custId %>  <%= @project.customer.name %>
+      <%= @project.customer_id %>  <%= @project.customer.name %>
     </td>
   </tr>
 
@@ -38,5 +38,6 @@
   </tr>
 </table>
   <%= link_to 'Edit', edit_project_path(@project) %> |
-  <%= link_to 'Back', projects_path %>
+  <%= link_to 'Back', projects_path %> |
+  <%= link_to 'Tasks for this project', tasks_path(:project => @project) %>
 

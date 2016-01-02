@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :statuses
+  resources :tasks
   resources :pms
   resources :customers
   resources :projects
