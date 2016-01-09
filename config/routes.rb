@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :statuses
+  resources :project_statuses
   resources :tasks
   resources :pms
   resources :customers

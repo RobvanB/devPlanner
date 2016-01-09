@@ -6,13 +6,22 @@ class TasksController < ApplicationController
     if params[:project]
       @project = Project.find(params[:project])
       @tasks   = @project.tasks
-    else if params[:filter]
-        passed_id = params[:filter]
-        id = passed_id[:selected_id]
-        @tasks = Task.where(user_id: id )   #:filter contains the user Id selected in the dropdown
+      return
+    else
+      if params[:current_id]
+        @filter_user_id = params[:current_id]       # If user has checked 'My Tasks', then that takes precedence over selected filter
       else
-        @tasks = Task.all
+        if params[:filter]
+          passed_id = params[:filter]               #:filter contains the user Id selected in the dropdown
+          @filter_user_id = passed_id[:selected_id]
+        end
       end
+    end
+
+    if @filter_user_id
+      @tasks = Task.where(user_id: @filter_user_id )
+    else
+      @tasks = Task.all
     end
   end
 

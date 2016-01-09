@@ -1,15 +1,27 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" xmlns="http://www.w3.org/1999/html"><%= notice %></p>
 
 <h1>Listing Tasks</h1>
 
 <% if @project %>
-  <h2 align="left">Tasks for project <%= @project.proj_name %> : </h2>
+  <h2 align="left">Tasks for project "<%= @project.proj_name %>" : </h2>
 <% else %>
-    <form class="filter_form">
-        <%= collection_select(:filter, :selected_id, User.all, :id, :dropdown, options = { include_blank: true } ) %>
-        <input type="submit" value="Filter" />
-    </form>
-<% end  %>
+    <% if @filter_user_id && @filter_user_id != "" %>
+        <h2 align="left">Tasks for user "<%=  User.find_by_id(@filter_user_id).dropdown %>": </h2>
+    <% end %>
+<% end %>
+
+<form>
+    <%= collection_select(:filter, :selected_id, User.all.sort_by(&:id), :id, :dropdown,
+                          options = { include_blank: true }, html_options = {class: "dropdown"} ) %>
+    <div style="width:220px">
+      <%= check_box_tag(:current_id) %>
+      <%= label_tag(:current_id, "My Tasks only") %>
+    </div>
+    <div class="button">
+        <input type="submit" class="btn btn-primary btn-sm" value="Filter" />
+    </div>
+
+</form>
 
 <table class="table">
   <thead>

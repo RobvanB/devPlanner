@@ -213,3 +213,15 @@ footer {
     margin-top: 45px;
     @include box_sizing;
   }
+
+input[type="checkbox"]:focus {
+  outline: none;
+  outline-offset: -2px;
+  border: 1px solid #ccc;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: content-box;
+  padding: 0;
+}

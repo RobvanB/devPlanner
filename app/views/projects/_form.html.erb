@@ -14,8 +14,8 @@
 
   <% if @project.persisted? %>
     <div class="field" >
-      <%= f.label :proj_id %><br>
-      <%= f.text_field :proj_id, :disabled=>true, class: "inputdisabled" %>
+      <%= f.label :id %><br>
+      <%= f.text_field :id, :disabled=>true, class: "inputdisabled" %>
     </div>
   <% end %>
 
@@ -24,7 +24,7 @@
     <%= f.text_field :proj_name %>
   </div>
   <div class="field">
-    <%= f.label :custId %><br>
+    <%= f.label :customer_id %><br>
     <%= f.collection_select(:customer_id, Customer.all, :id, :name, { include_blank: true } ) %>
   </div>
 

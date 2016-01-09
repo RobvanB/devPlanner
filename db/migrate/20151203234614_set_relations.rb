@@ -13,7 +13,7 @@ class SetRelations < ActiveRecord::Migration
     #  p.belongs_to :project, index:true
     #end
 
-    #change_table :statuses do |s|
+    #change_table :project_statuses do |s|
     #  s.belongs_to :project, index:true
     #end
 

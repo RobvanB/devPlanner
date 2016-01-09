@@ -37,10 +37,10 @@ RSpec.describe StatusesController, type: :controller do
   let(:valid_session) { {} }
 
   describe "GET #index" do
-    it "assigns all statuses as @statuses" do
+    it "assigns all project_statuses as @project_statuses" do
       status = Status.create! valid_attributes
       get :index, {}, valid_session
-      expect(assigns(:statuses)).to eq([status])
+      expect(assigns(:project_statuses)).to eq([status])
     end
   end
 
@@ -149,7 +149,7 @@ RSpec.describe StatusesController, type: :controller do
       }.to change(Status, :count).by(-1)
     end
 
-    it "redirects to the statuses list" do
+    it "redirects to the project_statuses list" do
       status = Status.create! valid_attributes
       delete :destroy, {:id => status.to_param}, valid_session
       expect(response).to redirect_to(statuses_url)

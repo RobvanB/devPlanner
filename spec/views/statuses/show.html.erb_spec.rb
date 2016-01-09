@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "statuses/show", type: :view do
+RSpec.describe "project_statuses/show", type: :view do
   before(:each) do
     @status = assign(:status, Status.create!(
       :name => "Name"
