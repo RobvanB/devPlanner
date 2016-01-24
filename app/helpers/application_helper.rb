@@ -8,4 +8,10 @@ module ApplicationHelper
       "#{base_title} | #{page_title}"
     end
   end
+
+  def test_user
+    @testUser = "123"
+  end
+
+
 end

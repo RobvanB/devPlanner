@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  resources :task_comments
+  resources :task_statuses
   resources :project_statuses
-  resources :tasks
   resources :pms
   resources :customers
   resources :projects
@@ -16,7 +17,14 @@ Rails.application.routes.draw do
   match '/signin',      to:  'sessions#new'         , via:  [:get]
   match '/signout',     to:  'sessions#destroy'     , via:  [:delete]
   match '/cust',        to:  'customers#new'        , via:  [:get]
+
+
+  match '/tasks/:id',   to:  'tasks#update_w_comment',via:  [:patch]
+  resources :tasks
+
   #match '/customers',   to:   'customers#index'     , via:  [:get]
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -45,9 +45,14 @@ class ProjectStatusesController < ApplicationController
 
   # DELETE /project_statuses/1
   def destroy
-    @project_status.destroy
     respond_to do |format|
-      format.html { redirect_to project_statuses_url, notice: 'Project Status was successfully destroyed.' }
+      if (@project_status.projects.exists?)
+        flash[:error] = "Status cannot be deleted: there are still projects with this status."
+        format.html { redirect_to project_statuses_url }
+      else
+        @project_status.destroy
+        format.html { redirect_to project_statuses_url, notice: 'Project Status was successfully destroyed.' }
+      end
     end
   end
 

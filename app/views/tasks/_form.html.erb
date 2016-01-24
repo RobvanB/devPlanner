@@ -10,7 +10,26 @@
           <% end %>
           </ul>
         </div>
+      <% else %>
+          <% if @errors && @errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@errors.count, "error") %> prohibited this task from being saved:</h2>
+
+                <ul>
+                  <% @errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
       <% end %>
+
+      <%= f.hidden_field :id %>
+
+      <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+      </div>
 
       <div class="field">
         <%= f.label :project_id %><br>
@@ -21,12 +40,27 @@
         <%= f.label "Assigned to" %><br>
         <%= f.collection_select(:user_id, User.all, :id, :name,{ include_blank: true } ) %>
       </div>
+
       <div class="field">
-        <%= f.label :name %><br>
-        <%= f.text_field :name %>
+        <%= f.label "Task Status" %><br>
+        <%= f.collection_select(:task_status_id, TaskStatus.all, :id, :name,{ include_blank: true } ) %>
       </div>
+
+      <%= f.fields_for :form_task_comment['task_comment'] do |ff| %>
+
+        <%= ff.hidden_field :id %>
+        <%= ff.hidden_field :task_id, value: @task.id %>
+        <%= ff.hidden_field :user_id, value: current_user.id  %>
+
+        <%= ff.label "Comment" %> </br>
+        <%= ff.text_field :comment %>
+
+      <% end %>
+
       <div class="actions">
         <%= f.submit %>
       </div>
-    <% end %>
+  <% end %>
+
+
 </div>

@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  require 'debugger'
+
   include SessionsHelper
 
   # Force signout to prevent CSRF attacks
@@ -18,5 +20,4 @@ class ApplicationController < ActionController::Base
       redirect_to signin_url, notice: "Please sign in." unless signed_in?
     end
   end
-
 end

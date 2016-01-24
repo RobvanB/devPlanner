@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160109001305) do
+ActiveRecord::Schema.define(version: 20160117194940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,18 +42,36 @@ ActiveRecord::Schema.define(version: 20160109001305) do
   create_table "projects", force: :cascade do |t|
     t.string   "proj_name"
     t.integer  "customer_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "status_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "project_status_id"
     t.integer  "pm_id"
+  end
+
+  create_table "task_comments", force: :cascade do |t|
+    t.text     "comment"
+    t.integer  "task_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "task_comments", ["task_id"], name: "index_task_comments_on_task_id", using: :btree
+  add_index "task_comments", ["user_id"], name: "index_task_comments_on_user_id", using: :btree
+
+  create_table "task_statuses", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tasks", force: :cascade do |t|
     t.integer  "project_id"
     t.integer  "user_id"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "task_status_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -69,4 +87,6 @@ ActiveRecord::Schema.define(version: 20160109001305) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
+  add_foreign_key "task_comments", "tasks"
+  add_foreign_key "task_comments", "users"
 end

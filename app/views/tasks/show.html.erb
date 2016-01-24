@@ -1,21 +1,34 @@
 <p id="notice" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"><%= notice %></p>
 
 <p>
+  <strong>Task Description:</strong>
+  <%= @task.name %>
+</p>
+
+<p>
   <strong>Project:</strong>
   <%= @task.project_id %>  </br>
   <%= @task.project.proj_name %>
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong>Assigned to:</strong>
   <%= @task.user_id %>      </br>
   <%=  @task.user.name %>
 </p>
 
 <p>
-  <strong>Task Description:</strong>
-  <%= @task.name %>
+  <strong>Task Status</strong>
+  <%= @task.task_status_id %>      </br>
+  <%=  @task.task_status.name %>
 </p>
+
+<% if @task_comments.nil? %>
+    <h3> No comments for this task yet</h3>
+<% else %>
+    <%= render 'task_comments_show' %>
+<% end %>
+
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>
