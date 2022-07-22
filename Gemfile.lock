@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/sporkrb/spork.git
+  remote: https://github.com/sporkrb/spork.git
   revision: 224df492657e617a0c93c0319e78f0eefee5b636
   specs:
     spork (1.0.0rc4)
@@ -191,7 +191,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (1.2.9)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
